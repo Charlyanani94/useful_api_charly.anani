@@ -5,6 +5,7 @@ export const useAuthStore = defineStore('auth', {
 		token: null,
 		user: null,
 	}),
+
 	actions: {
 			async login(email, password) {
 				const apiUrl = 'http://localhost:8000/api/login'
@@ -18,7 +19,7 @@ export const useAuthStore = defineStore('auth', {
 					})
 					data = await res.json()
 				} catch (e) {
-					throw new Error('Impossible de contacter le serveur. Vérifiez l\'URL ou le backend.')
+					throw new Error('Impossible de contacter le serveur.')
 				}
 				if (!res.ok) throw new Error(data && data.message ? data.message : 'Erreur de connexion')
 				this.token = data.token
@@ -36,7 +37,7 @@ export const useAuthStore = defineStore('auth', {
 					})
 					data = await res.json()
 				} catch (e) {
-					throw new Error('Impossible de contacter le serveur. Vérifiez l\'URL ou le backend.')
+					throw new Error('Impossible de contacter le serveur.')
 				}
 				if (!res.ok) throw new Error(data && data.message ? data.message : "Erreur d'inscription")
 				this.token = null
