@@ -4,9 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+
+
+use App\Models\ShortLink;
+
+use Illuminate\Support\Facades\Auth;
+
+
+
 class ShortLinkController extends Controller
 {
+
     //
+
+
+
+
      public function shorten(Request $request)
     {
         $request->validate([
@@ -17,7 +31,7 @@ class ShortLinkController extends Controller
         $code = $request->custom_code ?? Str::random(6);
 
         $shortLink = ShortLink::create([
-            'user_id' => Auth::id(),
+            'user_id' => Auth::check() ? Auth::id() : null,
             'original_url' => $request->original_url,
             'code' => $code,
         ]);

@@ -52,10 +52,8 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-         if (!Auth::attempt($request->only('email', 'password'))) {
-            throw ValidationException::withMessages([
-                'email' => ['Invalid credentials.'],
-            ])->status(401); 
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json(['message' => 'Invalid credentials.'], 401);
         }
 
         $user = Auth::user();
