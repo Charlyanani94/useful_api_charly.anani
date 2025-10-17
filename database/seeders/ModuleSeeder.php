@@ -21,7 +21,7 @@ class ModuleSeeder extends Seeder
     {
         Module::create(['name' => 'URL Shortener', 'description' => 'Raccourcir et gérer des liens']);
         Module::create(['name' => 'Wallet', 'description' => 'Gestion du solde et transferts']);
-        Module::create(['name' => 'Marketplace', 'description' => 'Gestion de produits et commandes']);
+        Module::create(['name' => 'Marketplace + Stock Manager', 'description' => 'Gestion de produits et commandes']);
         Module::create(['name' => 'Time Tracker', 'description' => 'Suivi du temps et sessions']);
         Module::create(['name' => 'Investment Tracker', 'description' => 'Suivi du portefeuille d\'investissement']);
     }
